@@ -1,0 +1,41 @@
+body {
+  background-color: #111;
+  color: #f1f1f1;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+input[type='file'] {
+  margin-top: 15px;
+}
+
+#colorPalette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.color-item {
+  margin: 10px;
+  text-align: center;
+}
+
+.color-box {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px #000;
+  margin-bottom: 8px;
+}
+
+.color-label {
+  font-size: 14px;
+  color: #ccc;
+}
