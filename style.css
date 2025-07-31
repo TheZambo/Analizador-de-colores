@@ -22,10 +22,35 @@ input[type='file'] {
   margin-top: 20px;
 }
 
+.color-item {
+  margin: 10px;
+  text-align: center;
+}
+
 .color-box {
   width: 80px;
   height: 80px;
-  margin: 5px;
   border: 2px solid #fff;
   box-shadow: 0 0 5px #000;
+  margin-bottom: 8px;
+}
+
+.color-label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.copy-btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.copy-btn:hover {
+  background-color: #555;
 }
