@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colores para Serigrafía - The Zambo</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Zambo - Colores para Serigrafía</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>The Zambo - Colores para Serigrafía</h1>
-    <p>Sube una imagen para detectar los colores más predominantes ideales para serigrafía en prenda negra usando medios tonos.</p>
+    <p class="info-text">Sube una imagen para detectar los colores más predominantes ideales para serigrafía usando medios tonos.</p>
 
-    <input type="file" id="imageInput" accept="image/*" />
-    <br />
-    <canvas id="canvas" style="display:none;"></canvas>
-    <br />
-    <img id="preview" src="" alt="Preview" style="max-width: 100%; display: none;" />
-    <h2>Colores sugeridos:</h2>
+    <input type="file" id="imageInput" accept="image/*">
+    <div id="imagePreview"></div>
+    
+    <h2>Colores Detectados</h2>
     <div id="colorPalette"></div>
+
+    <h2>Consejos Técnicos</h2>
+    <table>
+      <tr><th>Parámetro</th><th>Valor Recomendado</th></tr>
+      <tr><td>Número de malla</td><td>90 a 120 hilos/cm</td></tr>
+      <tr><td>Lineatura</td><td>45 a 55 LPI</td></tr>
+      <tr><td>Puntos recomendados</td><td>Tramas redondas o elípticas</td></tr>
+      <tr><td>Tinta recomendada</td><td>Plastisol blanco base o descarga + pigmentos</td></tr>
+    </table>
   </div>
 
   <script src="color-thief.min.js"></script>
