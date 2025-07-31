@@ -1,33 +1,52 @@
-const imageInput = document.getElementById('imageInput');
-const preview = document.getElementById('preview');
-const canvas = document.getElementById('canvas');
-const colorPalette = document.getElementById('colorPalette');
+const imageInput = document.getElementById("imageInput");
+const imagePreview = document.getElementById("imagePreview");
+const colorPalette = document.getElementById("colorPalette");
 const colorThief = new ColorThief();
 
-imageInput.addEventListener('change', function () {
+imageInput.addEventListener("change", function () {
   const file = this.files[0];
-  if (!file) return;
+  if (file) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    const reader = new FileReader();
 
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    preview.src = e.target.result;
-    preview.style.display = 'block';
+    reader.onload = function (e) {
+      img.src = e.target.result;
+      imagePreview.innerHTML = "";
+      imagePreview.appendChild(img);
 
-    preview.onload = function () {
-      const numberOfColors = 8;
-      const palette = colorThief.getPalette(preview, numberOfColors);
-      showPalette(palette);
+      img.onload = function () {
+        const colors = colorThief.getPalette(img, 6); // 6 colores
+        displayColors(colors);
+      };
     };
-  };
-  reader.readAsDataURL(file);
+
+    reader.readAsDataURL(file);
+  }
 });
 
-function showPalette(palette) {
-  colorPalette.innerHTML = '';
-  palette.forEach((color) => {
-    const box = document.createElement('div');
-    box.className = 'color-box';
-    box.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-    colorPalette.appendChild(box);
+function rgbToHex(r, g, b) {
+  return "#" + [r, g, b].map(x =>
+    x.toString(16).padStart(2, '0')
+  ).join('');
+}
+
+function displayColors(colors) {
+  colorPalette.innerHTML = "";
+
+  colors.forEach(color => {
+    const [r, g, b] = color;
+    const hex = rgbToHex(r, g, b);
+    const div = document.createElement("div");
+    div.className = "color-box";
+    div.style.backgroundColor = hex;
+    div.title = hex;
+    div.textContent = hex;
+    
+    div.addEventListener("click", () => {
+      navigator.clipboard.writeText(hex);
+    });
+
+    colorPalette.appendChild(div);
   });
 }
